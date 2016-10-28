@@ -1,1 +1,10 @@
-Hello World!
+<ul>
+    {% for album in albums %}
+        <li><a href="/albums/{{ album[0].id}}/1">{{ album[0].title }}</a></li>
+        <ul>
+            {% for image in album['arrayImages'] %}
+                <li>{{ image.path }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</ul>

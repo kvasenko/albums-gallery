@@ -13,9 +13,10 @@ class AlbumsController extends BaseController
 
     public function listAction(Request $request)
     {
-        var_dump($this->getHandler()->all());
+        $albums = $this->getHandler()->listAlbums();
+        $albums[0]['arrayImages'];
 
-        return $this->render('AppGallery_Bundle:Albums:index.html.twig');
+        return $this->render('AppGallery_Bundle:Albums:index.html.twig', array('albums' => $albums));
     }
 
     public function detailsAction(Request $request)
@@ -34,5 +35,4 @@ class AlbumsController extends BaseController
 
         return $this->render('AppGallery_Bundle:Albums:details.html.twig', array('pagination' => $pagination));
     }
-
 }

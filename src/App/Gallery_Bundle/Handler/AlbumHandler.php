@@ -7,8 +7,13 @@ class AlbumHandler extends BaseHandler
 {
     protected $tableAlias = 'a.';
 
-    public function all()
+    public function listAlbums()
     {
+        $albums = $this->getRepository()->selectAlbumsWithImages();
 
+        foreach ($albums as &$album) {
+            $album['arrayImages'] = json_decode('[' . $album['arrayImages'] . ']');
+        }
+        return $albums;
     }
 }

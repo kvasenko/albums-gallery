@@ -120,7 +120,7 @@ class Album
         return $this->images;
     }
 
-    public function addOrderLineItem(Image $image)
+    public function addImage(Image $image)
     {
         $this->images->add($image);
     }
