@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Gallery_Bundle\Repositories;
+namespace App\Gallery_Bundle\Repository;
 
 use App\Gallery_Bundle\Entity\Album;
 use Doctrine\ORM\EntityRepository;
@@ -17,5 +17,10 @@ class AlbumRepository extends EntityRepository
     {
         return $builder->select('a')
             ->from('AppGallery_Bundle:Album', 'a');
+    }
+
+    public function selectAlbums()
+    {
+
     }
 }
