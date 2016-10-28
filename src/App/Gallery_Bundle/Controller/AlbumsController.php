@@ -30,7 +30,7 @@ class AlbumsController extends BaseController
         $pagination = $paginator->paginate(
             $query,
             $request->get('page', 1),
-            5
+            10
         );
 
         return $this->render('AppGallery_Bundle:Albums:details.html.twig', array('pagination' => $pagination));
