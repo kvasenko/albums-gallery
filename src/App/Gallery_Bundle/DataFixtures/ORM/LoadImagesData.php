@@ -34,7 +34,7 @@ class LoadAImagesData implements FixtureInterface, ContainerAwareInterface, Orde
 
         $albums = $albumRepo->findAll();
 
-        $iterator = 1;
+        $iterator = 0;
 
         while ($iterator < self::COUNT_IMAGES) {
             $image = new Image();
@@ -50,7 +50,6 @@ class LoadAImagesData implements FixtureInterface, ContainerAwareInterface, Orde
             if (!$current) {
                 break;
             }
-            var_dump($current->getTitle());
 
             $image->setAlbum($current);
             $manager->persist($image);
@@ -59,7 +58,6 @@ class LoadAImagesData implements FixtureInterface, ContainerAwareInterface, Orde
 
         $manager->flush();
     }
-
 
     /**
      * {@inheritDoc}
