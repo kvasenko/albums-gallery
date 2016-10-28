@@ -1,0 +1,3 @@
+app_gallery._homepage:
+    path:     /
+    defaults: { _controller: AppGallery_Bundle:Albums:index }
