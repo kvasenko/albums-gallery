@@ -1,0 +1,21 @@
+<div class="count">
+    {{ pagination.getTotalItemCount }}
+</div>
+<table>
+    <tr>
+        <th>{{ knp_pagination_sortable(pagination, 'Id', 'i.id') }}</th>
+        <th{% if pagination.isSorted('i.Title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'i.title') }}</th>
+    </tr>
+
+    {# table body #}
+    {% for image in pagination %}
+        <tr {% if loop.index is odd %}class="color"{% endif %}>
+            <td>{{ image.id }}</td>
+            <td>{{ image.title }}</td>
+        </tr>
+    {% endfor %}
+</table>
+
+<div class="navigation">
+    {{ knp_pagination_render(pagination) }}
+</div>
