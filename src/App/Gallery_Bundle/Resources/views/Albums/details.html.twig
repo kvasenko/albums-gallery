@@ -1,21 +1,26 @@
-<div class="count">
-    {{ pagination.getTotalItemCount }}
-</div>
-<table>
-    <tr>
-        <th>{{ knp_pagination_sortable(pagination, 'Id', 'i.id') }}</th>
-        <th{% if pagination.isSorted('i.Title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'i.title') }}</th>
-    </tr>
+{% extends '::base.html.twig' %}
 
-    {# table body #}
-    {% for image in pagination %}
-        <tr {% if loop.index is odd %}class="color"{% endif %}>
-            <td>{{ image.id }}</td>
-            <td>{{ image.title }}</td>
+{% block body %}
+
+    <div class="count">
+        {{ pagination.getTotalItemCount }}
+    </div>
+    <table>
+        <tr>
+            <th>{{ knp_pagination_sortable(pagination, 'Id', 'i.id') }}</th>
+            <th{% if pagination.isSorted('i.Title') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Title', 'i.title') }}</th>
         </tr>
-    {% endfor %}
-</table>
 
-<div class="navigation">
-    {{ knp_pagination_render(pagination) }}
-</div>
+        {# table body #}
+        {% for image in pagination %}
+            <tr {% if loop.index is odd %}class="color"{% endif %}>
+                <img src="{{ asset(image.path) }}" alt="" />
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div class="navigation">
+        {{ knp_pagination_render(pagination) }}
+    </div>
+{% endblock %}
+
