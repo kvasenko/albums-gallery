@@ -1,0 +1,12 @@
+services:
+  app_api.repository.album:
+      class: App\Gallery_Bundle\Repositories\AlbumRepository
+      factory: ['@doctrine.orm.entity_manager', getRepository]
+      arguments:
+          - App\Gallery_Bundle\Entity\Album
+
+  app_api.repository.image:
+      class: App\Gallery_Bundle\Repositories\ImageRepository
+      factory: ['@doctrine.orm.entity_manager', getRepository]
+      arguments:
+          - App\Gallery_Bundle\Entity\Image
