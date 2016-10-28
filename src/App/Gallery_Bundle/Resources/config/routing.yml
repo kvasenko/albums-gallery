@@ -1,3 +1,7 @@
 app_gallery._homepage:
     path:     /
-    defaults: { _controller: AppGallery_Bundle:Albums:index }
+    defaults: { _controller: AppGallery_Bundle:Albums:list}
+
+app_gallery.album_details:
+    path:     /albums/{id}/{page}
+    defaults: { _controller: AppGallery_Bundle:Albums:details}
