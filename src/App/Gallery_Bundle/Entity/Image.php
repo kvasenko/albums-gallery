@@ -19,16 +19,22 @@ class Image
     private $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     private $path;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     private $description;
@@ -138,6 +144,9 @@ class Image
         return $this->album;
     }
 
+    /**
+     * @param Album $album
+     */
     public function setAlbum(Album $album)
     {
         $this->album = $album;

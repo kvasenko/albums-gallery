@@ -6,12 +6,18 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class BaseHandler
 {
+
     protected $om;
 
     protected $entityClass;
 
     protected $repository;
 
+
+    /**
+     * @param ObjectManager $om
+     * @param $entityClass
+     */
     public function __construct(
         ObjectManager $om,
         $entityClass

@@ -6,6 +6,9 @@ class AlbumHandler extends BaseHandler
 {
     const FIRST_INDEX = 0;
 
+    /**
+     * @return array
+     */
     public function getListAlbumsWithImages()
     {
         $result = $this->getRepository()->selectAlbumsWithImages();

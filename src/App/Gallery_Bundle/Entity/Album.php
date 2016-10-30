@@ -20,11 +20,15 @@ class Album
     private $id;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     private $title;
 
     /**
+     * @var string
+     *
      * @ORM\Column(type="string", length=255)
      */
     private $description;
@@ -120,6 +124,9 @@ class Album
         return $this->images;
     }
 
+    /**
+     * @param Image $image
+     */
     public function addImage(Image $image)
     {
         $this->images->add($image);
