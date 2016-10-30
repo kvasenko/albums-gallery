@@ -1,15 +1,16 @@
-<div class="container">
-    <div class="row">
-        {% for album in albums %}
-            <h2><a href="/albums/{{ album[0].id}}/1">{{ album[0].title }}</a></h2>
-            {% for image in album['arrayImages'] %}
-                <span class="col-md-4 thumb">
-                    <a class="thumbnail" href="#">
-                        <img class="img-responsive" width="60" height="60" src="/bundles/appgallery_/images/{{ asset(image.path) }}">
-                    </a>
-                </span>
+{% block body %}
+    <div class="container">
+        <div class="row">
+            {% for album in albums %}
+                <h2><a href="/albums/{{ album.id}}/1">{{ album.title }}</a></h2>
+                {% for image in album['images'] %}
+                    <span class="col-md-4 thumb">
+                        <a class="thumbnail" href="#">
+                            <img title="{{ image.title }}" class="img-responsive" width="60" height="60" src="/bundles/appgallery_/images/{{ asset(image.path) }}">
+                        </a>
+                    </span>
+                {% endfor %}
             {% endfor %}
-        {% endfor %}
+        </div>
     </div>
-</div>
-
+{% endblock %}

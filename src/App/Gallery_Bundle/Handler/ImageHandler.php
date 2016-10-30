@@ -2,16 +2,12 @@
 
 namespace App\Gallery_Bundle\Handler;
 
-use App\Gallery_Bundle\Entity\Image;
-use Doctrine\Common\Persistence\ObjectManager;
-
 
 class ImageHandler extends BaseHandler
 {
-    protected $tableAlias = 'i.';
-
-    public function getImagesByAlbum(int $albumId)
+    public function getImagesByAlbumId($albumId)
     {
-        return $this->getRepository()->getQueryImagesByAlbum($albumId);
+        return $this->getRepository()->getQueryImagesByAlbumId($albumId);
+
     }
 }
