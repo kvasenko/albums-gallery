@@ -5,15 +5,23 @@ namespace App\Gallery_Bundle\Handler;
 
 class AlbumHandler extends BaseHandler
 {
-    protected $tableAlias = 'a.';
+    const FIRST_INDEX = 0;
 
-    public function listAlbums()
+    public function getListAlbumsWithImages()
     {
-        $albums = $this->getRepository()->selectAlbumsWithImages();
+        $result = $this->getRepository()->selectAlbumsWithImages();
+        $array = [];
 
-        foreach ($albums as &$album) {
-            $album['arrayImages'] = json_decode('[' . $album['arrayImages'] . ']');
+        foreach ($result as $item) {
+            $array[$item['albumId']]['id'] = $item['albumId'];
+            $array[$item['albumId']]['title'] = $item['albumTitle'];
+            $array[$item['albumId']]['images'][] =
+                [
+                    'path'=> $item[self::FIRST_INDEX]->getPath(),
+                    'title'=> $item[self::FIRST_INDEX]->getTitle()
+                ];
         }
-        return $albums;
+
+        return $array;
     }
 }

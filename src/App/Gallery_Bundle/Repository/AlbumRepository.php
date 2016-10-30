@@ -10,29 +10,36 @@ use Doctrine\ORM\Query\ResultSetMapping;
 
 class AlbumRepository extends EntityRepository
 {
-    /**
-     * @param QueryBuilder $builder
-     * @return QueryBuilder
-     */
-    protected function getSelect(QueryBuilder $builder)
-    {
-        return $builder->select('a')
-            ->from('AppGallery_Bundle:Album', 'a');
-    }
+    const LIMIT = 10;
 
     public function selectAlbumsWithImages()
     {
         $rsm = new ResultSetMapping();
 
-        $query = 'SELECT a.*, (SELECT GROUP_CONCAT(CONCAT(\'{"path": "\', i.path, \'", "imageTitle": "\', i.title,\'"}\')) FROM (SELECT im.* FROM images im LIMIT 10) i) arrayImages FROM albums a;';
+        $query = 'SELECT i.id, i.title, i.path, a.id as albumId, a.title as albumTitle
+                  FROM albums a
+                    JOIN images i
+                      ON a.id = i.album_id
+                  WHERE
+                    (
+                      SELECT COUNT(*)
+                      FROM images i2
+                      WHERE i2.id <= i.id
+                      AND i2.album_id = i.album_id
+                    ) <= :limit
+                  ORDER BY a.id DESC;';
 
-        $rsm->addEntityResult('AppGallery_Bundle:Album', 'a');
-        $rsm->addFieldResult('a','id','id');
-        $rsm->addFieldResult('a','title','title');
-        $rsm->addScalarResult('arrayImages','arrayImages');
+        $rsm->addEntityResult('AppGallery_Bundle:Image', 'i');
+        $rsm->addFieldResult('i','id', 'id');
+        $rsm->addFieldResult('i','title', 'title');
+        $rsm->addFieldResult('i','path', 'path');
+        $rsm->addScalarResult('albumId', 'albumId');
+        $rsm->addScalarResult('albumTitle', 'albumTitle');
+
 
         return $this->getEntityManager()
             ->createNativeQuery($query, $rsm)
+            ->setParameter('limit', self::LIMIT)
             ->getResult();
     }
 }

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kvasenko
- * Date: 28.10.16
- * Time: 10:27
- */
 
 namespace App\Gallery_Bundle\Handler;
 
@@ -32,4 +26,6 @@ class BaseHandler
     {
         return $this->repository;
     }
+
+
 }
