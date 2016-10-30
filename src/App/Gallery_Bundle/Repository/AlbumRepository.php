@@ -2,11 +2,8 @@
 
 namespace App\Gallery_Bundle\Repository;
 
-use App\Gallery_Bundle\Entity\Album;
 use Doctrine\ORM\EntityRepository;
-use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\Query\ResultSetMapping;
-
 
 class AlbumRepository extends EntityRepository
 {
@@ -35,7 +32,6 @@ class AlbumRepository extends EntityRepository
         $rsm->addFieldResult('i','path', 'path');
         $rsm->addScalarResult('albumId', 'albumId');
         $rsm->addScalarResult('albumTitle', 'albumTitle');
-
 
         return $this->getEntityManager()
             ->createNativeQuery($query, $rsm)

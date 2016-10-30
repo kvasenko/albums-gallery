@@ -4,7 +4,6 @@ namespace App\Gallery_Bundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 
-
 class AlbumsController extends BaseController
 {
     protected $entityName = 'album';

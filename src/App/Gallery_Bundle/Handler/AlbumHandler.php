@@ -2,7 +2,6 @@
 
 namespace App\Gallery_Bundle\Handler;
 
-
 class AlbumHandler extends BaseHandler
 {
     const FIRST_INDEX = 0;

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kvasenko
- * Date: 28.10.16
- * Time: 10:21
- */
 
 namespace App\Gallery_Bundle\Controller;
 

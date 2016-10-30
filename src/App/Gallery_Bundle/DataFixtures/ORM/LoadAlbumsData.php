@@ -1,11 +1,11 @@
 <?php
+
 namespace App\Gallery_Bundle\DataFixtures\ORM;
 
 use App\Gallery_Bundle\Entity\Album;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
-
 
 class LoadAlbumsData implements FixtureInterface, OrderedFixtureInterface
 {

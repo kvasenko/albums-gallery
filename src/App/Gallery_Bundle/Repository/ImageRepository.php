@@ -4,7 +4,6 @@ namespace App\Gallery_Bundle\Repository;
 
 use Doctrine\ORM\EntityRepository;
 
-
 class ImageRepository extends EntityRepository
 {
     public function getQueryImagesByAlbumId($albumId)

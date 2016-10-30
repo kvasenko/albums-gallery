@@ -8,7 +8,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-
 class LoadAImagesData implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
     const COUNT_IMAGES = 85;

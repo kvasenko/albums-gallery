@@ -4,7 +4,6 @@ namespace App\Gallery_Bundle\Handler;
 
 use Doctrine\Common\Persistence\ObjectManager;
 
-
 class BaseHandler
 {
     protected $om;
@@ -26,6 +25,4 @@ class BaseHandler
     {
         return $this->repository;
     }
-
-
 }
