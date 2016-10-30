@@ -37,21 +37,22 @@ class LoadAImagesData implements FixtureInterface, ContainerAwareInterface, Orde
         $iterator = 0;
 
         while ($iterator < self::COUNT_IMAGES) {
-            $image = new Image();
-            $image->setTitle('title_' . uniqid());
-            $image->setDescription('desc_' . uniqid());
-            $image->setPath('/uploaded/test.jpg');
-
-            if ($iterator % 20 === 0) {
+            if ($iterator && ($iterator % 20 === 0)) {
                 next($albums);
             }
 
             $current = current($albums);
+
             if (!$current) {
                 break;
             }
 
+            $image = new Image();
+            $image->setTitle('title_' . uniqid());
+            $image->setDescription('desc_' . uniqid());
+            $image->setPath('test.jpg');
             $image->setAlbum($current);
+
             $manager->persist($image);
             $iterator++;
         }
