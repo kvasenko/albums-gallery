@@ -20,14 +20,7 @@ class AlbumsController extends BaseController
     {
         $this->handlerName = 'app_gallery.image.handler';
 
-        $query = $this->getHandler()->getImagesByAlbumId($request->get('id'));
-        $paginator  = $this->get('knp_paginator');
-
-        $pagination = $paginator->paginate(
-            $query,
-            $request->get('page', 1),
-            10
-        );
+        $pagination = $this->getHandler()->setUpPaginator($request);
 
         return $this->render('AppGallery_Bundle:Albums:details.html.twig', ['pagination' => $pagination]);
     }

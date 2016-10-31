@@ -22,3 +22,4 @@ services:
      arguments:
         - "@doctrine.orm.entity_manager"
         - App\Gallery_Bundle\Entity\Image
+        - "@knp_paginator"
